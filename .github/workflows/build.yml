@@ -19,6 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   eslint:
+    name: Eslint
     runs-on: ubuntu-latest
     steps:
         - name: Verificando o repositório do Github
