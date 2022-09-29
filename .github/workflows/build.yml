@@ -1,4 +1,4 @@
-name: Build
+name: job-evaluator
 on:
   push:
     branches:
