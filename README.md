@@ -1,6 +1,6 @@
 # My Pokemon Trainer API
 
-# Contexto
+# Objetivo
 Este projeto é uma execução da API `pokeapi.com` com foco em construir uma pokédex para cada treinador dessa internet! 
 
 ## Técnologias usadas
