@@ -3,6 +3,8 @@
 # Objetivo
 Este projeto é uma execução da API `pokeapi.com` com foco em construir uma pokédex para cada treinador dessa internet! 
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=rafaelPermec_pokemon-trainer-party)
+
 ## Técnologias usadas
 
 Back-end:
