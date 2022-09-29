@@ -1,0 +1,19 @@
+{
+  "name": "pokemon-trainer",
+  "version": "1.0.0",
+  "description": "Uma aplicação em node.js, express e mongoDB para ajudar todos os treinadores pokemons da primeira geração à completar sua pokédex!",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelPermec/pokemon-trainer-api.git"
+  },
+  "author": "Rafael P. M. Castro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelPermec/pokemon-trainer-api/issues"
+  },
+  "homepage": "https://github.com/rafaelPermec/pokemon-trainer-api#readme"
+}
