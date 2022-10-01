@@ -25,6 +25,7 @@
         "import/no-unresolved": "off",
         "no-console": "off",
         "camelcase": "warn",
+        "no-underscore-dangle": "off",
         "arrow-parens": [
             2,
             "always"
