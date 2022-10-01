@@ -28,6 +28,8 @@ const pokemonFactory = (
     return { stat, value };
   });
 
+  // conflito de nomeclatura da API:
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const typesBuild = types.map((item: any) => stringSerializer(
     item.type.name,
   ));
