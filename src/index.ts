@@ -1,20 +1,15 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import helmet from 'helmet';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocs from './swagger.json';
+import 'dotenv/config';
+import app from './app';
+import connectToDatabase from './models/connection';
 
-dotenv.config();
-
-const app = express();
-
-const { PORT } = process.env;
-
-app.use(helmet());
-app.use(express.json());
-
-app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-app.listen(PORT, () => console.log(`This app is running on http://localhost:${PORT}`));
-
-export default app;
+const PORT = process.env.PORT || 3001;
+connectToDatabase()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Running server on port: ${PORT}`));
+  })
+  .catch((error) => {
+    console.log('Connection with database generated an error:\r\n');
+    console.error(error);
+    console.log('\r\nServer initialization will be cancelled now.');
+    process.exit(0);
+  });
