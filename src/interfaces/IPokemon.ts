@@ -61,5 +61,6 @@ export {
   pokeType,
   pokeStats,
   pokeBuildStdout,
+  pokemonZodSchema,
   IPokemon,
 };
