@@ -1,45 +1,156 @@
+import { StatusCodes } from 'http-status-codes';
 import { IModel } from '../interfaces/IModel';
-import { IPokemon, pokemonZodSchema } from '../interfaces/IPokemon';
-import { ErrorTypes } from '../errors/error.catalog';
+import { IService } from '../interfaces/IService';
+import { IPokemon } from '../interfaces/IPokemon';
+import { IItems } from '../interfaces/IItems';
+import IPokedex from '../interfaces/IPokedex';
+import fetchRandomPokemon from '../helpers/pokemon.fetch.API';
+import fetchRandomItems from '../helpers/item.fetch.API';
+import HttpException from '../errors/http.exception';
 
-class PokemonService implements IModel<IPokemon> {
-  private _frame: IModel<IPokemon>;
+class PokemonService implements IService<IPokemon | IItems | IPokedex> {
+  private _pokemonModel: IModel<IPokemon>;
 
-  constructor(model: IModel<IPokemon>) {
-    this._frame = model;
+  private _itemModel: IModel<IItems>;
+
+  private _pokedexModel: IModel<IPokedex>;
+
+  constructor(
+    pokemonModel: IModel<IPokemon>,
+    itemModel: IModel<IItems>,
+    pokedexModel: IModel<IPokedex>,
+  ) {
+    this._pokemonModel = pokemonModel;
+    this._itemModel = itemModel;
+    this._pokedexModel = pokedexModel;
   }
 
-  public async create(obj: IPokemon): Promise<IPokemon> {
-    const parsed = pokemonZodSchema.safeParse(obj);
-    if (!parsed.success) {
-      throw parsed.error;
+  public async generatePokemon(): Promise<IPokemon[]> {
+    await this._pokemonModel.delete();
+
+    const generateNewPokemon = await fetchRandomPokemon();
+
+    await this._pokemonModel.create(generateNewPokemon);
+
+    const findRandomPokemon = await this._pokemonModel.read();
+
+    return findRandomPokemon;
+  }
+
+  public async generateItem(): Promise<IItems[]> {
+    await this._itemModel.delete();
+
+    const generateNewItem = await fetchRandomItems();
+
+    await this._itemModel.create(generateNewItem);
+
+    const findRandomItem = await this._itemModel.read();
+
+    return findRandomItem;
+  }
+
+  public async addPokemonName(newName: string): Promise<IPokemon> {
+    const randomPokemon = await this._pokemonModel.read();
+    const { heldItems,
+      image,
+      level,
+      pokedexId,
+      size,
+      specieName,
+      status,
+      types,
+      _id } = randomPokemon[0];
+
+    if (!_id) {
+      throw new HttpException(
+        StatusCodes.FORBIDDEN,
+        'No wild pokémon here! Go to /pokemon/generate',
+      );
     }
-    return this._frame.create(obj);
+
+    const addingName = await this._pokemonModel.update(_id as string, {
+      pokedexId,
+      level,
+      partyName: newName,
+      specieName,
+      image,
+      size,
+      status,
+      types,
+      heldItems,
+    });
+
+    return addingName as IPokemon;
   }
 
-  public async read(): Promise<IPokemon[]> {
-    const cars = await this._frame.read();
-    if (!cars) throw new Error(ErrorTypes.EntityNotFound);
-    return cars;
+  public async addPokemonItem(): Promise<IPokemon> {
+    const randomPokemon = await this._pokemonModel.read();
+    const randomItem = await this._itemModel.read();
+    const { image,
+      level,
+      partyName,
+      pokedexId,
+      size,
+      specieName,
+      status,
+      types,
+      _id } = randomPokemon[0];
+    const { itemName, quickEffect } = randomItem[0];
+
+    if (!_id) {
+      throw new HttpException(
+        StatusCodes.FORBIDDEN,
+        'No wild pokémon here! Go to /pokemon/generate',
+      );
+    }
+
+    const addingItem = await this._pokemonModel.update(_id as string, {
+      pokedexId,
+      level,
+      partyName,
+      specieName,
+      image,
+      size,
+      status,
+      types,
+      heldItems: [{ itemName, quickEffect }],
+    });
+
+    return addingItem as IPokemon;
   }
 
-  public async readOne(_id: string): Promise<IPokemon> {
-    const car = await this._frame.readOne(_id);
-    if (!car) throw new Error(ErrorTypes.EntityNotFound);
-    return car;
-  }
+  public async removePokemonItem(): Promise<IPokemon> {
+    const randomPokemon = await this._pokemonModel.read();
+    const { image,
+      level,
+      partyName,
+      pokedexId,
+      size,
+      specieName,
+      status,
+      types,
+      _id } = randomPokemon[0];
 
-  public async update(_id: string, obj: IPokemon): Promise<IPokemon> {
-    const carUpdated = await this._frame.update(_id, obj);
-    if (!carUpdated) throw new Error(ErrorTypes.EntityNotFound);
-    return carUpdated;
-  }
+    if (!_id) {
+      throw new HttpException(
+        StatusCodes.FORBIDDEN,
+        'No wild pokémon here! Go to /pokemon/generate',
+      );
+    }
 
-  public async delete(_id: string): Promise<IPokemon> {
-    const carDeleted = await this._frame.delete(_id);
-    if (!carDeleted) throw new Error(ErrorTypes.EntityNotFound);
-    return carDeleted;
+    const addingItem = await this._pokemonModel.update(_id as string, {
+      pokedexId,
+      level,
+      partyName,
+      specieName,
+      image,
+      size,
+      status,
+      types,
+      heldItems: [],
+    });
+
+    return addingItem as IPokemon;
   }
 }
-
 export default PokemonService;

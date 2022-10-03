@@ -21,6 +21,4 @@ const fetchRandomItems = async () => {
   return items;
 };
 
-fetchRandomItems();
-
 export default fetchRandomItems;
