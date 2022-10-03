@@ -3,7 +3,7 @@ import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
 import { IPokemon } from '../interfaces/IPokemon';
 import { IItems } from '../interfaces/IItems';
-import IPokedex from '../interfaces/IPokedex';
+import { IPokedex } from '../interfaces/IPokedex';
 import fetchRandomPokemon from '../helpers/pokemon.fetch.API';
 import fetchRandomItems from '../helpers/item.fetch.API';
 import HttpException from '../errors/http.exception';
@@ -47,6 +47,55 @@ class PokemonService implements IService<IPokemon | IItems | IPokedex> {
     const findRandomItem = await this._itemModel.read();
 
     return findRandomItem;
+  }
+
+  public async capturePokemon(): Promise<IPokedex> {
+    const [wildPokemon] = await this._pokemonModel.read();
+    console.log(wildPokemon);
+
+    const { image,
+      level,
+      partyName,
+      pokedexId,
+      size,
+      specieName,
+      status,
+      types,
+      heldItems } = wildPokemon;
+
+    const pokemons = await this._pokedexModel.create({
+      image,
+      level,
+      partyName,
+      pokedexId,
+      size,
+      specieName,
+      status,
+      types,
+      heldItems,
+    });
+
+    return pokemons;
+  }
+
+  public async checkPokedex(): Promise<IPokedex[]> {
+    const pokemons = await this._pokedexModel.read();
+
+    return pokemons;
+  }
+
+  public async removeOneFromPokedex(_id: string): Promise<IPokedex[]> {
+    await this._pokedexModel.deleteById(_id);
+    const pokemons = await this._pokedexModel.read();
+
+    return pokemons;
+  }
+
+  public async removeAllFromPokedex(): Promise<IPokedex[]> {
+    await this._pokedexModel.delete();
+    const pokemons = await this._pokedexModel.read();
+
+    return pokemons;
   }
 
   public async addPokemonName(newName: string): Promise<IPokemon> {

@@ -1,9 +1,9 @@
 import express from 'express';
+import 'express-async-errors';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './configs/swagger.json';
 import PokemonRoutes from './routes/pokemon.routes';
-import 'express-async-errors';
 import errorMiddleware from './errors/error.middleware';
 
 const app = express();
