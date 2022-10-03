@@ -15,7 +15,7 @@ const pokemonMongooseSchema = new Schema<IPokemon>({
 }, { versionKey: false });
 
 class Pokemon extends MongoModel<IPokemon> {
-  constructor(model = mongooseCreateModel('Pokemon', pokemonMongooseSchema)) {
+  constructor(model = mongooseCreateModel('Pokemons', pokemonMongooseSchema)) {
     super(model);
   }
 }
