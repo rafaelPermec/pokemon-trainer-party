@@ -1,7 +1,6 @@
-import { Model, isValidObjectId } from 'mongoose';
-import { StatusCodes } from 'http-status-codes';
+import { isValidObjectId, Model } from 'mongoose';
 import { IModel } from '../interfaces/IModel';
-import HttpException from '../helpers/http.exception';
+import { ErrorTypes } from '../errors/error.catalog';
 
 abstract class MongoModel<T> implements IModel<T> {
   protected _model: Model<T>;
@@ -19,19 +18,19 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new HttpException(StatusCodes.BAD_REQUEST, 'Invalid id.');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
 
     return this._model.findOne({ _id });
   }
 
   public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new HttpException(StatusCodes.BAD_REQUEST, 'Invalid id.');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
 
     return this._model.findByIdAndUpdate({ _id }, { ...obj }, { new: true });
   }
 
   public async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new HttpException(StatusCodes.BAD_REQUEST, 'Invalid id.');
+    if (!isValidObjectId(_id)) throw new Error(ErrorTypes.InvalidMongoId);
 
     return this._model.findByIdAndRemove({ _id });
   }

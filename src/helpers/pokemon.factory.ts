@@ -1,15 +1,5 @@
 import stringSerializer from './string.serializer';
-
-interface pokeType {
-  name: string,
-  url: string,
-}
-
-interface pokeStats {
-  base_stat: number,
-  effort: number,
-  stat: pokeType,
-}
+import { pokeStats, pokeType } from '../interfaces/IPokemon';
 
 const pokemonFactory = (
   id: number,
@@ -28,7 +18,7 @@ const pokemonFactory = (
     return { stat, value };
   });
 
-  // conflito de nomeclatura da API:
+  // conflito de tipos com a API de consumo:
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const typesBuild = types.map((item: any) => stringSerializer(
     item.type.name,

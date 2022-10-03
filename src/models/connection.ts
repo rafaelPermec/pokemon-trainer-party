@@ -5,11 +5,11 @@ const MONGO_DB_URL = 'mongodb://localhost:27017';
 
 const options = {
   autoIndex: false,
-  dbName: 'PokemonTrainerParty',
+  dbName: process.env.DB_MONGO_DBNAME,
 };
 
 const connectToDatabase = (
-  mongoDatabaseURI = process.env.MONGO_URI
+  mongoDatabaseURI = process.env.DB_MONGO_URI
     || MONGO_DB_URL,
 ) => connect(mongoDatabaseURI, options);
 
