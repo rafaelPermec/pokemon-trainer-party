@@ -2,7 +2,7 @@ import { pokeBuildStdout } from '../../interfaces/IPokemon';
 
 const pokemonParty: pokeBuildStdout[] = [
   {
-    id: 76,
+    pokedexId: 76,
     level: 53,
     partyName: 'Pedrita',
     specieName: 'Golem',
@@ -26,7 +26,7 @@ const pokemonParty: pokeBuildStdout[] = [
     ],
   },
   {
-    id: 109,
+    pokedexId: 109,
     level: 74,
     partyName: 'Tosse',
     specieName: 'Koffing',
@@ -47,7 +47,7 @@ const pokemonParty: pokeBuildStdout[] = [
     ],
   },
   {
-    id: 30,
+    pokedexId: 30,
     level: 26,
     partyName: 'Dona Ratona',
     specieName: 'Nidorina',

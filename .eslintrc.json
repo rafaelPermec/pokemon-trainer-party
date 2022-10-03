@@ -36,6 +36,7 @@
         ],
         "implicit-arrow-linebreak": "off",
         "consistent-return": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": [
             "error",
             {
@@ -62,7 +63,7 @@
         "max-lines-per-function": [
             "error",
             {
-                "max": 50,
+                "max": 70,
                 "skipBlankLines": true,
                 "skipComments": true
             }

@@ -22,7 +22,7 @@ interface pokeSizeStdout {
 }
 
 interface pokeBuildStdout {
-  id: number,
+  pokedexId: number,
   level: number,
   partyName: string,
   specieName: string,
