@@ -1,9 +1,8 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { Model } from 'mongoose';
+import { ZodError } from 'zod';
 // import {  } from '../../../models';
 // import {  } from '../../../services';
-import { ZodError } from 'zod';
 import {
   pokemonWithId,
   pokemonWithoutId,
@@ -16,15 +15,15 @@ describe('Pokemon Service', () => {
   const pokemonService = new PokemonService(pokemonModel);
 
   before(() => {
-    sinon.stub(Model, 'create').resolves(pokemonWithId);
-    sinon.stub(Model, 'find').resolves(pokemonWithoutId);
-    sinon.stub(Model, 'findOne')
+    sinon.stub(pokemonModel, 'create').resolves(pokemonWithId);
+    sinon.stub(pokemonModel, 'find').resolves(pokemonWithoutId);
+    sinon.stub(pokemonModel, 'findOne')
       .onCall(0)
       .resolves(pokemonWithoutId)
       .onCall(1)
       .resolves(null);
-    sinon.stub(Model, 'findByIdAndUpdate').resolves(pokemonWithNameItemAndId);
-    sinon.stub(Model, 'findByIdAndRemove').resolves(pokemonWithNameItemAndId);
+    sinon.stub(pokemonModel, 'findByIdAndUpdate').resolves(pokemonWithNameItemAndId);
+    sinon.stub(pokemonModel, 'findByIdAndRemove').resolves(pokemonWithNameItemAndId);
   });
 
   after(() => {

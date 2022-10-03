@@ -13,7 +13,7 @@ describe('Pokemon Model', () => {
 
   before(() => {
     sinon.stub(Model, 'create').resolves(pokemonWithId);
-    sinon.stub(Model, 'find').resolves(pokemonWithoutId);
+    sinon.stub(Model, 'find').resolves(pokemonWithoutId[]);
     sinon.stub(Model, 'findOne').resolves(pokemonWithoutId);
     sinon.stub(Model, 'findByIdAndUpdate').resolves(pokemonWithNameItemAndId);
     sinon.stub(Model, 'findByIdAndRemove').resolves(pokemonWithNameItemAndId);
