@@ -1,20 +1,20 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
-import PokemonModel from '../../../models/pokemon.model';
+import PokedexModel from '../../../models/pokedex.model';
 import {
   pokemonWithId,
   pokemonWithoutId,
   pokemonWithNameItemAndId,
 } from '../../mocks/pokemon.mock';
+import pokemonPartyMock from '../../mocks/pokemon.party.mock';
 
-describe('Pokemon Model', () => {
-  const pokemonModel = new PokemonModel();
+describe('Pokedex Model', () => {
+  const pokedexModel = new PokedexModel();
 
   before(() => {
     sinon.stub(Model, 'create').resolves(pokemonWithId);
-    sinon.stub(Model, 'find').resolves(pokemonWithId as any);
-    sinon.stub(Model, 'findOne').resolves(pokemonWithoutId);
+    sinon.stub(Model, 'find').resolves(pokemonPartyMock as any);
     sinon.stub(Model, 'findByIdAndUpdate').resolves(pokemonWithNameItemAndId);
     sinon.stub(Model, 'findByIdAndRemove').resolves(pokemonWithNameItemAndId);
   });
@@ -23,38 +23,23 @@ describe('Pokemon Model', () => {
     sinon.restore();
   });
 
-  describe('creating a Pokemon', () => {
+  describe('creating a Pokedex', () => {
     it('successfully created', async () => {
-      const newPokemon = await pokemonModel.create(pokemonWithoutId);
+      const newPokemon = await pokedexModel.create(pokemonWithoutId);
       expect(newPokemon).to.be.deep.equal(pokemonWithId);
     });
   });
 
-  describe('searching a Pokemon', () => {
+  describe('searching a Pokedex', () => {
     it('successfully found', async () => {
-      const pokemonsFound = await pokemonModel.read();
-      expect(pokemonsFound).to.be.deep.equal(pokemonWithId);
+      const pokemonsFound = await pokedexModel.read();
+      expect(pokemonsFound).to.be.deep.equal(pokemonPartyMock);
     });
   });
 
-  describe('searching a Pokemon by id', () => {
+  describe('updating a Pokedex by id', () => {
     it('successfully found', async () => {
-      const pokemonFound = await pokemonModel.readOne('62cf1fc6498565d94eba52cd');
-      expect(pokemonFound).to.be.deep.equal(pokemonWithoutId);
-    });
-
-    it('_id not found', async () => {
-      try {
-        await pokemonModel.readOne('123ERRADO');
-      } catch (error: any) {
-        expect(error.message).to.be.eq('InvalidMongoId');
-      }
-    });
-  });
-
-  describe('updating a Pokemon by id', () => {
-    it('successfully found', async () => {
-      const pokemonDeleted = await pokemonModel.update(
+      const pokemonDeleted = await pokedexModel.update(
         '62cf1fc6498565d94eba52cd',
         { partyName: 'Pedrita' },
       );
@@ -63,22 +48,22 @@ describe('Pokemon Model', () => {
 
     it('_id not found', async () => {
       try {
-        await pokemonModel.update('123ERRADO', { partyName: 'Pedrita' });
+        await pokedexModel.update('123ERRADO', { partyName: 'Pedrita' });
       } catch (error: any) {
         expect(error.message).to.be.eq('InvalidMongoId');
       }
     });
   });
 
-  describe('deleting a Pokemon by id', () => {
+  describe('deleting a Pokedex by id', () => {
     it('successfully found', async () => {
-      const pokemonDeleted = await pokemonModel.delete('62cf1fc6498565d94eba52cd');
+      const pokemonDeleted = await pokedexModel.deleteById('62cf1fc6498565d94eba52cd');
       expect(pokemonDeleted).to.be.deep.equal(pokemonWithNameItemAndId);
     });
 
     it('_id not found', async () => {
       try {
-        await pokemonModel.delete('123ERRADO');
+        await pokedexModel.deleteById('123ERRADO');
       } catch (error: any) {
         expect(error.message).to.be.eq('InvalidMongoId');
       }
