@@ -21,7 +21,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
   `git clone git@github.com:rafaelPermec/pokemon-trainer-party.git`
   em seu terminal.
   
-  2 - Entre com o comando `cd pokemon-trainer-party && npm install` para entrar no diretorio principal e instalar as dependencias do projeto.
+  2 - Entre com o comando `cd pokemon-trainer-party && npm install` para entrar no diretório principal e instalar as dependências do projeto.
   
   3 - Crie um arquivo `.env` e configure as variáveis de ambiente
    ```js
@@ -41,7 +41,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
 
 ## 🧪 Executando Testes
 
-* Para rodar todos os testes, excute o comando abaixo na mesma pasta que está o `package.json`:
+* Para rodar todos os testes, execute o comando abaixo na mesma pasta que está o `package.json`:
 
   ```
     npm run test
@@ -52,7 +52,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
 
   1 - Vá até o endpoint `/pokemon/generate` para gerar um pokemon aleatório. Você pode enviar novas requisições `GET` para este mesmo endpoint, e vai ficar parecendo que está correndo na grama do jogo!
   
-  2 - Depois até o endpoint `/item/generate` para gerar um item aleatório, que pode ser trocado enviando uma requisição `GET` para este mesmo endpoint - fique atento! É dificil ele se repetir!
+  2 - Depois até o endpoint `/item/generate` para gerar um item aleatório, que pode ser trocado enviando uma requisição `GET` para este mesmo endpoint - fique atento! É difícil ele se repetir!
   
   3 - Dê um nome para o seu pokémon, utilizando o `body: { newName: 'nomeDePreferencia' }` na rota `PATCH /pokemon/add-party-name`.
   
@@ -64,6 +64,6 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
   
   7 - Quer ver quantos pokemons capturou até agora?? Cheque sua pokédex na rota `GET /pokedex`.
   
-  8 - Se quiser soltar um pokémon, utilize a rota `DELETE /pokedex/remove/id/:id` - aonde o ':id' é o número identificador do seu pokémon na aplicação!
+  8 - Se quiser soltar um pokémon, utilize a rota `DELETE /pokedex/remove/id/:id` - aonde o `:id` é o número identificador do seu pokémon na aplicação!
   
   9 - Cansou e quer liberar todos? Utilize a rota `DELETE /pokedex/remove/all` 
