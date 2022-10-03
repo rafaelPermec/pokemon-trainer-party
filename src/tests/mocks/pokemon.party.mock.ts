@@ -1,4 +1,6 @@
-const pokemonParty = [
+import { pokeBuildStdout } from '../../interfaces/IPokemon';
+
+const pokemonParty: pokeBuildStdout[] = [
   {
     id: 76,
     level: 53,

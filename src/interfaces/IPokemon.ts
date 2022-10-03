@@ -17,8 +17,8 @@ interface pokeStatusStdout {
 }
 
 interface pokeSizeStdout {
-  stat: string,
-  value: number,
+  height: number,
+  weight: number,
 }
 
 interface pokeBuildStdout {

@@ -6,7 +6,7 @@ interface effectEntries {
 
 interface itemStdout {
   itemName: string,
-  quickEffect: number,
+  quickEffect: string,
 }
 
 export {

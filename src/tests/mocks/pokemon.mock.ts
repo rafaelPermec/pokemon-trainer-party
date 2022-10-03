@@ -1,4 +1,6 @@
-const pokemon = {
+import { pokeBuildStdout } from '../../interfaces/IPokemon';
+
+const pokemon: pokeBuildStdout = {
   id: 76,
   level: 53,
   partyName: '',
@@ -19,7 +21,7 @@ const pokemon = {
   heldItems: [],
 };
 
-const pokemonWithItem = {
+const pokemonWithItem: pokeBuildStdout = {
   id: 76,
   level: 53,
   partyName: '',
@@ -44,7 +46,7 @@ const pokemonWithItem = {
   ],
 };
 
-const pokemonWithNameAndItem = {
+const pokemonWithNameAndItem: pokeBuildStdout = {
   id: 76,
   level: 53,
   partyName: 'Pedrita',
