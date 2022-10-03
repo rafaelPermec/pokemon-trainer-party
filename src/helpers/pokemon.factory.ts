@@ -25,7 +25,7 @@ const pokemonFactory = (
   ));
 
   const pokemonBuild = {
-    id,
+    pokedexId: id,
     level: pokemonLevel,
     partyName: '',
     specieName: stringSerializer(name),

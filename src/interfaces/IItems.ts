@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 interface effectEntries {
   effect: string,
   language?: object,
@@ -6,10 +8,18 @@ interface effectEntries {
 
 interface itemStdout {
   itemName: string,
-  quickEffect: number,
+  quickEffect: string,
 }
+
+const itemZodSchema = z.object({
+  itemName: z.string(),
+  quickEffect: z.string(),
+});
+
+type IItems = z.infer<typeof itemZodSchema>;
 
 export {
   effectEntries,
   itemStdout,
+  IItems,
 };
