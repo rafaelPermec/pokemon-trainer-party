@@ -1,8 +1,8 @@
 import { model as mongooseCreateModel, Schema } from 'mongoose';
-import { IPokemon } from '../interfaces/IPokemon';
+import { IPokedex } from '../interfaces/IPokedex';
 import MongoModel from './mongo.model';
 
-const pokemonMongooseSchema = new Schema<IPokemon>({
+const pokedexMongooseSchema = new Schema<IPokedex>({
   pokedexId: Number,
   level: Number,
   partyName: String,
@@ -12,12 +12,12 @@ const pokemonMongooseSchema = new Schema<IPokemon>({
   status: Array,
   types: Array,
   heldItems: Array,
-}, { versionKey: false });
+}, { versionKey: false, autoIndex: false });
 
-class Pokemon extends MongoModel<IPokemon> {
-  constructor(model = mongooseCreateModel('Pokemons', pokemonMongooseSchema)) {
+class Pokedex extends MongoModel<IPokedex> {
+  constructor(model = mongooseCreateModel('Pokedex', pokedexMongooseSchema)) {
     super(model);
   }
 }
 
-export default Pokemon;
+export default Pokedex;

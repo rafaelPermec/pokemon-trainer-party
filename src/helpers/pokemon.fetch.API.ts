@@ -19,6 +19,4 @@ const fetchRandomPokemon = async () => {
   return pokemons;
 };
 
-fetchRandomPokemon();
-
 export default fetchRandomPokemon;

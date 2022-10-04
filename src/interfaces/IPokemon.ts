@@ -35,6 +35,7 @@ interface pokeBuildStdout {
 }
 
 const pokemonZodSchema = z.object({
+  _id: z.string().optional(),
   pokedexId: z.number().max(151),
   level: z.number().max(100),
   partyName: z.string().min(3),
@@ -61,5 +62,6 @@ export {
   pokeType,
   pokeStats,
   pokeBuildStdout,
+  pokemonZodSchema,
   IPokemon,
 };
