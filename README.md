@@ -15,7 +15,8 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
 
 ## ✔️ Como rodar o projeto?
 
-### Localmente
+<details>
+<summary><code>Localmente</code></summary>
   
   1 - Dê o fork no projeto e clone-o para sua maquina com o comando 
   `git clone git@github.com:rafaelPermec/pokemon-trainer-party.git`
@@ -37,16 +38,18 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
   6 - Não se esqueça de direcionar sua GUI de requisições ou Browser para `http://localhost:3001`.
   
   7 - Para visualizar a documentação, basta acessar  `http://localhost:3001/api-doc`
- 
+  
+ </details>
 
 ## 🧪 Executando Testes
 
-* Para rodar todos os testes, execute o comando abaixo na mesma pasta que está o `package.json`:
+<details>
+<summary>Para rodar todos os testes, execute o comando abaixo na mesma pasta que está o <code>package.json</code>:</summary></code>
 
   ```
     npm run test
   ```
-
+</details>
 
 ## 🚗 Roadmap:
 
