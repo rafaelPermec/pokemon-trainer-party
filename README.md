@@ -5,7 +5,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=rafaelPermec_pokemon-trainer-party)
 
-## Técnologias usadas
+## 🧑‍💻 Técnologias usadas
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
