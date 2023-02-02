@@ -1,11 +1,11 @@
 # My Pokemon Trainer API
 
-## 🎯 Objetivo
+## Objetivo
 Este projeto é uma execução da API `pokeapi.com` com foco em construir uma pokédex para cada treinador dessa internet! 
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=rafaelPermec_pokemon-trainer-party)
 
-## 🧑‍💻 Técnologias usadas
+## Técnologias usadas
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
@@ -13,7 +13,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 
-## ✔️ Como rodar o projeto?
+## Como rodar o projeto?
 
 <details>
 <summary><code>Localmente</code></summary>
@@ -41,7 +41,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
   
  </details>
 
-## 🧪 Executando Testes
+## Executando Testes
 
 <details>
 <summary>Para rodar todos os testes, execute o comando abaixo na mesma pasta que está o <code>package.json</code>:</summary></code>
@@ -51,7 +51,7 @@ Este projeto é uma execução da API `pokeapi.com` com foco em construir uma po
   ```
 </details>
 
-## 🚗 Roadmap:
+## Roadmap:
 
   1 - Vá até o endpoint `/pokemon/generate` para gerar um pokemon aleatório. Você pode enviar novas requisições `GET` para este mesmo endpoint, e vai ficar parecendo que está correndo na grama do jogo!
   
